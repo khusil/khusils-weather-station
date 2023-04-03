@@ -1,0 +1,73 @@
+.head {
+    color: red;
+    font-size: 24px;
+}
+
+h1 {
+    color: white;
+    align-content: center;
+}
+
+.city {
+    color: black;
+}
+
+.btn {
+    background-color: rgb(8, 153, 243);
+}
+
+.list-group-item {
+    text-transform: capitalize;
+    color: black;
+    cursor: pointer;
+    border: solid;
+    border-radius: 10px
+}
+.list-group-item:hover {
+    background-color: transparent;
+}
+
+
+#city {
+    border: 3px solid gray;
+    border-radius: 5px;
+    
+}
+
+
+.card-deck {
+    margin-left: 45px;
+}
+
+#five-day-header {
+    margin-top: 40px;
+    margin-left: 20px;
+    display: block;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+p {
+    color: white;
+}
+
+#date {
+    font-weight: bold;
+}
+
+.bold-city {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.danger {
+    background-color: rgb(194, 0, 0);
+}
+
+.moderate {
+    background-color: rgb(246, 244, 239);
+}
+
+.favorable {
+    background-color: rgb(0, 103, 0);
+}
