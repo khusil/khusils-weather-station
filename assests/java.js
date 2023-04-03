@@ -6,14 +6,12 @@ var clickForCity = document.querySelector(".list-group-item");
 var saveCities = JSON.parse(localStorage.getItem(".list-group")) || [];
 
 var getWeatherInfo = function (city) {
-    // format the github api url
+    
     var apiUrl =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
       "&units=imperial&appid=8d1c76621b3c56e2c6ba4131cbdbfec9";
-  
-    // make a repo request to the url
-    fetch(apiUrl).then(function (response) {
+        fetch(apiUrl).then(function (response) {
       response.json().then(function (data) {
         var latitude = data.city.coord.lat;
         var longitude = data.city.coord.lon;
@@ -31,5 +29,38 @@ var getWeatherInfo = function (city) {
         });
       });
     });
+};
+var searchHandler = function (event) {
+    event.preventDefault();
+  
+    var searchInput = document.querySelector("#search-input");
+    var city = searchInput.value.trim();
+    saveCities[saveCities.length] = city;
+    cityHistory(city);
+    getWeatherInfo(city);
+  
+    searchInput.value = "";
+    localStorage.setItem(".list-group", JSON.stringify(saveCities));
   };
+  
+  window.addEventListener("load", function () {
+    var list = document.getElementById("city-container");
+    for (i = 0; i < saveCities.length; i++) {
+      var city = document.createElement("li");
+      city.classList.add("list-group-item");
+      city.innerHTML = saveCities[i];
+      list.appendChild(city);
+    }
+  
+
+    localStorage.clear();
+  });
+  
+  var displayWeather = function (data, city, uvData) {
+  document.querySelector(".weather-data").textContent = "";
+    document.querySelector(".card-deck").innerHTML = "";
+    var currentTemp = data.list[0].main.temp;
+    var currentHumid = data.list[0].main.humidity;
+    var currentWind = data.list[0].wind.speed;
+    var currentUv = uvData.value;
   
